@@ -31,9 +31,21 @@ All of these run locally with scikit-learn; **no API key is needed** except for 
 - **Market basket**: pairwise association rules (support, confidence, lift) among the top 400 products.
 - **Ask the data**: Claude (`claude-opus-5-5` by default) answers questions by calling a fixed set of read-only tools (`query_sales`, KPIs, segments, churn, forecast, anomalies, basket rules). It never sees raw rows and never writes code that gets executed. Server-side refusal fallbacks are enabled.
 
-## Run it
+## Quick start (only Python needed)
 
-Requirements: Python 3.11+, Node 20+.
+1. Install Python 3.10 or newer from [python.org](https://www.python.org/downloads/) (on Windows, tick "Add Python to PATH").
+2. Download this repository (green **Code** button, **Download ZIP**) and unzip it.
+3. Open a terminal in the unzipped folder and run:
+
+   ```bash
+   python start.py        # on macOS/Linux you may need: python3 start.py
+   ```
+
+The first run installs the packages, then the dashboard opens at http://localhost:8000. Press Ctrl+C to stop.
+
+## Run it for development
+
+Requirements: Python 3.10+, Node 20+.
 
 ```bash
 # 1. API
@@ -69,7 +81,7 @@ question. `CLAUDE_MODEL` overrides the model.
 
 ### Single process / Docker
 
-`npm run build` in `frontend/` creates `frontend/dist`, which the API serves at `/`, so one process runs everything:
+`npm run build` in `frontend/` creates `frontend/dist` (committed, so `start.py` works without Node), which the API serves at `/`. Docker:
 
 ```bash
 docker build -t retail-analytics .
